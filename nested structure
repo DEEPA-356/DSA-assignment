@@ -1,0 +1,58 @@
+Implematation of nested structure
+
+#include<stdio.h>
+#include<string.h>
+
+struct Friends
+{
+    char name[50];
+    char pet_name[50];
+    long int phone_number;
+};
+struct Type
+{
+    char type[50];
+    char common_frnds[50];
+    int places_visited_together;
+    struct Friends friend;
+};
+
+int main()
+{
+    int n,i;
+    printf("enter the no. of friends   : \n");
+    scanf("%d",&n);
+    struct Type Typ[n];
+    
+    for(i=0;i<n;i++)
+    {
+        printf("enter the friend name : \n");
+        scanf("%s",&Typ[i].friend.name);
+        printf("enter the pet name : \n");
+        scanf("%s",&Typ[i].friend.pet_name);
+        printf("enter the phone number : \n");
+        scanf("%ld",&Typ[i].friend.phone_number);
+        printf("enter the type of friend : \n");
+        scanf("%s",&Typ[i].type);
+        printf("enter the common friends name : \n");
+        scanf("%s",&Typ[i].common_frnds);
+        printf("enter the no. of places visited together: \n");
+        scanf("%d",&Typ[i].places_visited_together);
+        printf("\n");
+    }
+    
+    printf("\n list of friends:\n ");
+    
+    for(i=0;i<n;i++)
+    {
+        //printf("name of frnd : %s\t pet name : %s\tphone number : %ld type of friend : %s\t common friends : %s\t no.of places visited together : %d\n",Typ[i].friend.name,Typ[i].friend.pet_name,Typ[i].friend.phone_number,Typ[i].type,Typ[i].common_frnds,Typ[i].places_visited_together);
+        
+        printf("name of frnd : %s\n",Typ[i].friend.name);
+        printf("pet name : %s\n",Typ[i].friend.pet_name);
+        printf("phone number : %ld\n",Typ[i].friend.phone_number);
+        printf("type of friend : %s\n",Typ[i].type);
+        printf("name of common friends : %s\n",Typ[i].common_frnds);
+        printf("no.of places visited together : %d\n",Typ[i].places_visited_together);
+    }
+    return 0;
+}
