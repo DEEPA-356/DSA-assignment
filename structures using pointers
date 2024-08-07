@@ -1,0 +1,72 @@
+Implementation structures using pointers
+
+// structure using pointers
+#include <stdio.h>
+#include<stdlib.h>
+
+//declaring structure
+struct product
+{
+    char name[50];
+    int id;
+    float price;
+
+};
+
+int main() 
+{
+     int i,n;
+     printf("enter the no.of product: \n");
+     scanf("%d",&n);
+     struct product *ptr;
+     ptr = (struct product *) malloc(n *sizeof(struct product));
+     
+     //getting information from user
+     for(i=0;i<n;i++)
+     {
+         printf("enter the details of product : %d\n",i+1);
+         printf("enter the product name : \n");
+         scanf("%s",&(ptr+i)->name);
+         printf("enter the product id : \n");
+         scanf("%d",&(ptr+i)->id);
+         printf("enter the product price : \n");
+         scanf("%f",&(ptr+i)->price);
+     }
+     
+     printf("\ndisplaying the product detaiils\n");
+     for(i=0;i<n;i++)
+     {
+         printf("product name : %s\t product id : %d\t product price : %f\n",(ptr+i)->name,(ptr+i)->id,(ptr+i)->price);
+     }
+     
+     //finding maximum and minimum
+     float total = 0;
+     float maxiprice = (ptr + 0)->price;
+     float miniprice =(ptr + 0)->price;
+     int maxiindex = 0;
+     int miniindex = 0;
+      for(i=0;i<n;i++)
+      {
+          total += (ptr + i)->price;
+          if((ptr + i)->price > maxiprice)
+          {
+              maxiprice = (ptr + i)->price;
+              maxiindex = i;
+          }
+          if((ptr + i)->price < miniprice)
+          {
+              miniprice = (ptr + i)->price;
+              miniindex = i;
+          }
+      }
+      total = (ptr + 0)->price;
+      printf("\nmost expensive product\n");
+      printf(" product name : %s\t product id : %d \t product price : %f\n",(ptr + maxiindex)->name,(ptr + maxiindex)->id,(ptr + maxiindex)->price);
+      printf("\nleast expensive product\n");
+      printf(" product name : %s\t product id : %d \t product price : %f\n",(ptr + miniindex)->name, (ptr + miniindex)->id,(ptr + miniindex)->price);
+      
+     printf("\ntotal cost of all products : %f\n",total);
+      
+      free(ptr);
+    return 0;
+}
